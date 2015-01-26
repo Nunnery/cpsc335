@@ -73,6 +73,9 @@ public class SparseMatrix {
         if (column < 0 || column >= numOfColumns()) {
             throw new IllegalArgumentException("column must be greater than -1 and less than number of columns");
         }
+        if (row == column) {
+            return 1;
+        }
         return innerTable.has(row, column) ? innerTable.get(row, column) : 0D;
     }
 
@@ -92,6 +95,9 @@ public class SparseMatrix {
         }
         if (column < 0 || column >= numOfColumns()) {
             throw new IllegalArgumentException("column must be greater than -1 and less than number of columns");
+        }
+        if (row == column) {
+            return;
         }
         innerTable.put(row, column, value);
     }

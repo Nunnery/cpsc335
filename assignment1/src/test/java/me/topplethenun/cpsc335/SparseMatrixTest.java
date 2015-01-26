@@ -49,14 +49,14 @@ public class SparseMatrixTest {
     }
 
     @Test
-    public void doesGetReturnZeroWithNoSetting() {
+    public void doesGetReturnOneWithNoSetting() {
         int rows = 5;
         int columns = 5;
         SparseMatrix matrix = new SparseMatrix(rows, columns);
 
         assertNotNull(matrix);
 
-        double expected = 0;
+        double expected = 1;
         double actual = matrix.get(0, 0);
 
         assertEquals(expected, actual, 0.000005);
@@ -126,9 +126,9 @@ public class SparseMatrixTest {
 
         assertNotNull(matrix);
 
-        matrix.set(0, 0, 5);
+        matrix.set(0, 0, 1);
 
-        double expected = 5;
+        double expected = 1;
         double actual = matrix.get(0, 0);
 
         assertEquals(expected, actual, 0.000005);
@@ -344,7 +344,7 @@ public class SparseMatrixTest {
         matrixOne.set(0, 1, 2);
         matrixOne.set(0, 2, 3);
         matrixOne.set(1, 0, 4);
-        matrixOne.set(1, 1, 5);
+        matrixOne.set(1, 1, 1);
         matrixOne.set(1, 2, 6);
 
         /*
@@ -353,10 +353,10 @@ public class SparseMatrixTest {
          * 09 10
          * 11 12
          */
-        matrixTwo.set(0, 0, 7);
+        matrixTwo.set(0, 0, 1);
         matrixTwo.set(0, 1, 8);
         matrixTwo.set(1, 0, 9);
-        matrixTwo.set(1, 1, 10);
+        matrixTwo.set(1, 1, 1);
         matrixTwo.set(2, 0, 11);
         matrixTwo.set(2, 1, 12);
 
@@ -366,10 +366,10 @@ public class SparseMatrixTest {
          * 058 064
          * 139 154
          */
-        expected.set(0, 0, 58);
-        expected.set(0, 1, 64);
-        expected.set(1, 0, 139);
-        expected.set(1, 1, 154);
+        expected.set(0, 0, 1);
+        expected.set(0, 1, 46);
+        expected.set(1, 0, 79);
+        expected.set(1, 1, 1);
 
         SparseMatrix actual = matrixOne.multiply(matrixTwo);
 
@@ -391,7 +391,7 @@ public class SparseMatrixTest {
         matrixOne.set(0, 1, 2);
         matrixOne.set(0, 2, 3);
         matrixOne.set(1, 0, 4);
-        matrixOne.set(1, 1, 5);
+        matrixOne.set(1, 1, 1);
         matrixOne.set(1, 2, 6);
 
         SparseMatrix actual = matrixOne.multiply(null);
@@ -399,38 +399,30 @@ public class SparseMatrixTest {
         assertEquals(matrixOne.numOfRows(), actual.numOfRows());
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void doesMultiplyThrowExceptionWhenInvalidMults() {
         SparseMatrix matrixOne = new SparseMatrix(2, 3);
-        SparseMatrix matrixTwo = new SparseMatrix(4, 2);
+        SparseMatrix matrixTwo = new SparseMatrix(4, 3);
 
-        /*
-         * Setup a matrix that looks like the following
-         * 1 2 3
-         * 4 5 6
-         */
         matrixOne.set(0, 0, 1);
         matrixOne.set(0, 1, 2);
         matrixOne.set(0, 2, 3);
         matrixOne.set(1, 0, 4);
-        matrixOne.set(1, 1, 5);
+        matrixOne.set(1, 1, 1);
         matrixOne.set(1, 2, 6);
 
-        /*
-         * Setup a matrix that looks like the following
-         * 07 08
-         * 09 10
-         * 11 12
-         * 13 14
-         */
-        matrixTwo.set(0, 0, 7);
+        matrixTwo.set(0, 0, 1);
         matrixTwo.set(0, 1, 8);
+        matrixTwo.set(0, 2, 15);
         matrixTwo.set(1, 0, 9);
-        matrixTwo.set(1, 1, 10);
+        matrixTwo.set(1, 1, 1);
+        matrixTwo.set(1, 2, 16);
         matrixTwo.set(2, 0, 11);
         matrixTwo.set(2, 1, 12);
+        matrixTwo.set(2, 2, 17);
         matrixTwo.set(3, 0, 13);
         matrixTwo.set(3, 1, 14);
+        matrixTwo.set(3, 2, 18);
 
         SparseMatrix actual = matrixOne.multiply(matrixTwo);
 
