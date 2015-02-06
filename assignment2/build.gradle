@@ -1,0 +1,12 @@
+plugins {
+    id "com.github.hierynomus.license" version "0.11.0"
+}
+
+license {
+    header file('HEADER')
+    ignoreFailures false
+    strictCheck true
+    mapping {
+        java = 'SLASHSTAR_STYLE'
+    }
+}
