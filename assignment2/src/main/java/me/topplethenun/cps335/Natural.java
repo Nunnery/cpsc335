@@ -28,6 +28,11 @@ public final class Natural implements Comparable<Natural> {
     }
 
     @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    @Override
     public boolean equals(Object o) {
         return o instanceof Natural && value() == ((Natural) o).value();
     }
@@ -45,7 +50,7 @@ public final class Natural implements Comparable<Natural> {
         return Integer.compare(value, o.value);
     }
 
-    public static Comparator<Natural> numericalSorter() {
+    public static Comparator<Natural> comparatorByNumber() {
         return new Comparator<Natural>() {
             @Override
             public int compare(Natural o1, Natural o2) {
@@ -60,7 +65,7 @@ public final class Natural implements Comparable<Natural> {
         };
     }
 
-    public static Comparator<Natural> alphaSorter() {
+    public static Comparator<Natural> comparatorByAlpha() {
         return new Comparator<Natural>() {
             @Override
             public int compare(Natural o1, Natural o2) {
