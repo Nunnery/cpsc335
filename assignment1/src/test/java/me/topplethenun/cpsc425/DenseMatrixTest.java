@@ -8,7 +8,7 @@
  *
  * DISCLAIMER: THE WORKS ARE WITHOUT WARRANTY.
  */
-package me.topplethenun.cpsc335;
+package me.topplethenun.cpsc425;
 
 import org.junit.Test;
 

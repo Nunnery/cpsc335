@@ -1,2 +1,2 @@
-rootProject.name = "cpsc335"
-include "assignment1", "assignment2"
+rootProject.name = "cpsc425"
+include "assignment1", "assignment2", "assignment3"

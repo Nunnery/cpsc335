@@ -1,11 +1,10 @@
-package me.topplethenun.cpsc335;
+package me.topplethenun.cpsc425;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import me.topplethenun.cps335.Natural;
 import org.junit.Test;
 
 public class NaturalTest {
